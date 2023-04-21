@@ -18,7 +18,11 @@ $(function () {
   // useful when saving the description in local storage?
 
   saveBtnEl.on("click", function(){
-    
+    var parentDiv = $(this).parents('div.time-block');
+    var timeBlock = $(parentDiv).attr('id');
+    var textAreaEl = $(parentDiv).children()[1];
+    var eventToSave = $(textSpaceEl).val();
+
   })
 
   //
