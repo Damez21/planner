@@ -3,7 +3,7 @@
 // in the html.
 
 var saveBtnEl = $(".btn");
-var currentDayEl = $("#cuurentDay")
+var currentDayEl = $("#currentDay")
 var myAreaTime = dayjs();
 var timeBlockEl = $(".description")
 var oldPlansArray = JSON.parse(localStorage.getItem('newPlans'))
@@ -21,23 +21,20 @@ $(function () {
     var timeBlock = $(parentDiv).attr('id');
     var textAreaEl = $(parentDiv).children()[1];
     var textSaving = $(textAreaEl).val();
-    var savedText = {
-      "savedText": textSaving
-    }
+    console.log(textSaving)
+    console.log(timeBlock)
+ 
 
-    oldPlansArray = oldPlansArray.filter((d)=>d.timeBlock!==timeBlock)
-    oldPlansArray.with(savedText)
-  localStorage.setItem("newPlans", JSON.stringify(oldPlanArray));
+  localStorage.setItem(timeBlock, textSaving);
   init();
-  })
+   })
 
   function init() {
-    for (var i = 0; i < hoursArray.length; i++){
-      var textSpace = oldPlansArray.filter((d)=>d.timeBlock==="hour-" + hoursArray[i])
-      console.log(hoursArray[i], oldPlansArray)
-      if (textSpace.length > 0){
-        $("#hour-" + hoursArray[i] + " textarea ").val(textSpace[0].savedText);
-      }
+    for (var i = 9; i < 22; i++){
+      var getText = localStorage.getItem(`hour-${i}`)
+      console.log(getText);
+      $(`#hour-${i} .description`).val(getText)
+     
     }
   };
 
@@ -53,9 +50,9 @@ $(function () {
   for (var i =0; i < hoursArray.length; i++) {
     if (hoursArray[i] < currentTime) {
       $("#hour-" + hoursArray[i] + " textarea ").addClass("past");
-    } else (hoursArray[i] === currentTime); {
+    } else if (hoursArray[i] === currentTime) {
       $("#hour-" + hoursArray[i] + " textarea ").addClass("present");
-    } else if (hoursArray[i] > currentTime); {
+    } else {
       $("#hour-" + hoursArray[i] + " textarea ").addClass("future");
     }
   };
@@ -70,32 +67,3 @@ $(function () {
   init();
   $(currentDayEl).text(myAreaTime.format("dddd, MMMM DD hh:mm A"));
 }); 
-
-
-// dayjs().format("HH"); current hour military time;
-
-// dayjs().format("hA"); 12hr clock captail AM PM ;
-
-
-// var currDate = dayjs().format('YYYY-MM-DD')
-// var time9am = dayjs(currDate + ' 09:00:00');
-
-// dayjs().format("hA");
-
-// // make sure to use diff for a conditional
-
-// var hours = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
-// $(hours).each( function(i, item){
-//     console.log(item);
-// });
-
-// var curr = dayjs().format('YYYY-MM-DD')
-
-// var currDate = dayjs().format('YYYY-MM-DD')
-
-// dayjs(currDate).format('YYYY-MM-DD hh:mm:ss')
-
-// dayjs(currDate + '12:00:00').format('YYYY-MM-DD hh:mm:ss A')
-
-// var time12pm = dayjs(currDate + '12:00:00')
-// while in class i wrote the general functions down as references.
