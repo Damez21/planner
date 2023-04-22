@@ -8,4 +8,4 @@
 
 ## License: This project is licensed under the [Damez21] License - see the LICENSE.md file for details
 
-# Screen Shots: ![pic]()
+# Screen Shots: ![pic](./images/Screenshot%202023-04-22%20at%202.06.32%20PM.png) ![pic](./images/Screenshot%202023-04-22%20at%202.07.39%20PM.png) ![pic](./images/Screenshot%202023-04-22%20at%202.15.27%20PM.png)
