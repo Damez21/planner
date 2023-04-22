@@ -39,7 +39,7 @@ $(function () {
         $("#hour-" + hoursArray[i] + " textarea ").val(textSpace[0].savedText);
       }
     }
-  }
+  };
 
   //
   // TODO: Add code to apply the past, present, or future class to each time
@@ -48,18 +48,28 @@ $(function () {
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
   //
+  var currentTime = parseInt(dayjs().format("HH"));
+  hoursArray;
+  for (var i =0; i < hoursArray.length; i++) {
+    if (hoursArray[i] < currentTime) {
+      $("#hour-" + hoursArray[i] + " textarea ").addClass("past");
+    } else (hoursArray[i] === currentTime); {
+      $("#hour-" + hoursArray[i] + " textarea ").addClass("present");
+    } else if (hoursArray[i] > currentTime); {
+      $("#hour-" + hoursArray[i] + " textarea ").addClass("future");
+    }
+  };
 
 
 
-  
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
   init();
-  $(currentDayE1).text(localTime.format("dddd, MMMM DD hh:mm A"));
-});
+  $(currentDayEl).text(myAreaTime.format("dddd, MMMM DD hh:mm A"));
+}); 
 
 
 // dayjs().format("HH"); current hour military time;
@@ -89,4 +99,3 @@ $(function () {
 
 // var time12pm = dayjs(currDate + '12:00:00')
 // while in class i wrote the general functions down as references.
-
